@@ -1,17 +1,18 @@
-import React, {useEffect} from 'react';
-import axios from 'axios'
+import React from 'react';
+import Register from "./pages/register/Register";
+import Login from "./pages/login/Login";
+import {BrowserRouter, Route} from 'react-router-dom'
 
 function App() {
-
-    useEffect(()=>{
-        axios.get('/data')
-            .then( res => {
-                console.log(res.data)
-            })
-    }, []);
-
     return (
-        <h1>Hello from App</h1>
+        <BrowserRouter>
+            <div>
+                <Register/>
+                <Login/>
+                <Route exact path="/" component={Login}/>
+                <Route exact path="/register" component={Register}/>
+            </div>
+        </BrowserRouter>
     );
 }
 
