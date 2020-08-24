@@ -1,13 +1,24 @@
 import React, {useState} from 'react';
 import AuthService from "../../services/auth-service";
+import {setUser} from "./store/actions";
+
+import {useDispatch} from 'react-redux';
+import {useHistory} from 'react-router-dom'
+
 
 function Login() {
 
     const [state, setState] = useState({username:'', password:''});
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const onLogin = () =>{
-
         AuthService.login(state)
+            .then((res)=>{
+                AuthService.storeUserData(res.data);
+                dispatch(setUser(res.data))
+                history.push('/home')
+            })
     };
 
     return (
