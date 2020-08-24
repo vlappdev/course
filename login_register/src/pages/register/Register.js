@@ -1,15 +1,22 @@
 import React from 'react';
 import {useState} from 'react'
 import AuthService from '../../services/auth-service'
+import {useHistory} from 'react-router-dom'
 
 function Register() {
 
     const [state, setState] = useState({name: '', pass:''});
+    const history = useHistory();
 
     const onRegister = () =>{
         AuthService.register(state)
             .then((res)=>{
-                console.log(res.data)
+                if(res.data === 'ok'){
+                    history.push('/')
+                }
+                else{
+                    history.push('/register')
+                }
             })
     };
 

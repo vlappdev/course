@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function Navbar() {
     return (
         <nav className="navbar navbar-expand navbar-light bg-light">
-            <a href="#" className="navbar-brand">Login React</a>
+            <Link to="/" className="navbar-brand">Login React</Link>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                     <Link to="/" className="nav-link">Login</Link>
