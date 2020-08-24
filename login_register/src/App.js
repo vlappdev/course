@@ -4,15 +4,20 @@ import Login from "./pages/login/Login";
 import Navbar from "./components/navbar/Navbar"
 import {BrowserRouter, Route} from 'react-router-dom'
 
+import store from './store'
+import {Provider} from 'react-redux'
+
 function App() {
     return (
-        <BrowserRouter>
-            <div>
-                <Navbar/>
-                <Route exact path="/" component={Login}/>
-                <Route path="/register" component={Register}/>
-            </div>
-        </BrowserRouter>
+        <Provider store={store}>
+            <BrowserRouter>
+                <div>
+                    <Navbar/>
+                    <Route exact path="/" component={Login}/>
+                    <Route path="/register" component={Register}/>
+                </div>
+            </BrowserRouter>
+        </Provider>
     );
 }
 
